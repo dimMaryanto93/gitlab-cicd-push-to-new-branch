@@ -16,6 +16,6 @@ build-html:
 deploy-pages:
   image: alpine:latest
   before_script:
-    - apk install git -y
+    - apk add git
   script: 
     - git version
