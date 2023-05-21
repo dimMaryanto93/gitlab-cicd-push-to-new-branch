@@ -33,5 +33,5 @@ deploy-pages:
     - git config --global user.name "${GIT_ACTOR}"
   script: 
     - git add .
-    - git commit $COMMIT_OPTIONS -m ${COMMIT_MESSAGE}
+    - git commit $COMMIT_OPTIONS -m "${COMMIT_MESSAGE}"
     - git push $PUSH_OPTIONS $GIT_REMOTE_REPO $GIT_LOCAL_BRANCH:$GIT_REMOTE_BRANCH
