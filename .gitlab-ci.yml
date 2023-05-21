@@ -23,15 +23,15 @@ deploy-pages:
     COMMIT_MESSAGE: "build project ${CI_COMMIT_SHORT_SHA} on branch ${CI_COMMIT_REF_SLUG} at ${CI_COMMIT_TIMESTAMP}"
     GIT_LOCAL_BRANCH: main
     GIT_REMOTE_BRANCH: github-pages
-    REMOTE_REPO: "https://${GIT_ACTOR}:${GIT_ACCESS_TOKEN}@gitlab.dimas-maryanto.com/examples/gitlab-ci-cd/gitlab-ci-push-new-branch.git"
+    GIT_REMOTE_REPO: "https://${GIT_ACTOR}:${GIT_ACCESS_TOKEN}@gitlab.dimas-maryanto.com/examples/gitlab-ci-cd/gitlab-ci-push-new-branch.git"
   needs:
     - build-html
   before_script:
     - cd ${DIR_BUILD}
-    - git init -b $LOCAL_BRANCH
+    - git init -b $GIT_LOCAL_BRANCH
     - git config --global user.email "${GIT_ACTOR}@users.noreply.gitlab.com"
     - git config --global user.name "${GIT_ACTOR}"
   script: 
     - git add .
     - git commit $COMMIT_OPTIONS -m ${COMMIT_MESSAGE}
-    - git push $PUSH_OPTIONS $REMOTE_REPO $LOCAL_BRANCH:$GIT_REMOTE_BRANCH
+    - git push $PUSH_OPTIONS $GIT_REMOTE_REPO $GIT_LOCAL_BRANCH:$GIT_REMOTE_BRANCH
