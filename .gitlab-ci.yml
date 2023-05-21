@@ -20,10 +20,10 @@ deploy-pages:
   variables:
     GIT_VERSION: v2.30.1  
     PUSH_OPTIONS: --force
-    COMMIT_MESSAGE: "build project ${CI_COMMIT_SHORT_SHA} on branch ${CI_COMMIT_REF_SLUG} at ${CI_COMMIT_TIMESTAMP}"
+    COMMIT_MESSAGE: "build project ${CI_COMMIT_SHORT_SHA} on branch ${CI_COMMIT_BRANCH} at ${CI_COMMIT_TIMESTAMP}"
     GIT_LOCAL_BRANCH: main
     GIT_REMOTE_BRANCH: github-pages
-    GIT_REMOTE_REPO: "https://${GIT_ACTOR}:${GIT_ACCESS_TOKEN}@gitlab.dimas-maryanto.com/examples/gitlab-ci-cd/gitlab-ci-push-new-branch.git"
+    GIT_REMOTE_REPO: "$CI_REPOSITORY_URL"
   needs:
     - build-html
   before_script:
